@@ -8,9 +8,9 @@
     </v-app-bar>
 
     <v-main>
-      <fade-transition origin="center" mode="out-in" :duration="250">
-        <router-view />
-      </fade-transition>
+      <!-- <fade-transition origin="center" mode="out-in" :duration="250"> -->
+      <router-view />
+      <!-- </fade-transition> -->
     </v-main>
   </v-app>
 </template>
