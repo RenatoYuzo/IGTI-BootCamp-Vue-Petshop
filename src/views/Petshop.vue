@@ -1,11 +1,13 @@
 <template>
   <v-container>
+    <Cart :products="this.products" />
     <ProductsList :products="this.products" />
   </v-container>
 </template>
 
 <script>
 import ProductsList from "../components/ProductsList.vue";
+import Cart from "../components/Cart.vue";
 import { ApiService } from "../services/ApiService";
 
 import axios from "axios";
@@ -14,6 +16,7 @@ export default {
   name: "Petshop",
   components: {
     ProductsList,
+    Cart,
   },
   props: {},
   data: () => ({
