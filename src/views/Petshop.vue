@@ -1,7 +1,7 @@
 <template>
   <v-container>
-    <Cart :products="this.products" />
-    <ProductsList :products="this.products" />
+    <Cart :items="this.items" />
+    <ProductsList :products="this.products" :items="this.items" />
   </v-container>
 </template>
 
@@ -22,6 +22,24 @@ export default {
   data: () => ({
     service: new ApiService(),
     products: [],
+    items: [
+      {
+        preco: 50.2,
+        nome: "Produto 1",
+      },
+      {
+        preco: 50.3,
+        nome: "Produto 2",
+      },
+      {
+        preco: 50.4,
+        nome: "Produto 3",
+      },
+      {
+        preco: 50,
+        nome: "Produto 4",
+      },
+    ],
   }),
   created() {
     this.service.getAllProducts().then((res) => {

@@ -17,13 +17,13 @@
           {{ p.nome }}
         </v-card-title>
 
-        <v-card-subtitle>
-          {{ p.nome }}
+        <v-card-subtitle class="text-continuous">
+          {{ p.descricao }}
         </v-card-subtitle>
 
         <v-card-actions>
-          <v-btn @click="show = !show" color="orange lighten-2" text>
-            Descrição
+          <v-btn @click="addCart(p)" color="orange lighten-2" text>
+            Comprar
           </v-btn>
 
           <v-spacer></v-spacer>
@@ -53,13 +53,24 @@ export default {
   components: {},
   props: {
     products: Array,
+    items: Array,
   },
   data: () => ({
     show: false,
   }),
+  methods: {
+    addCart(item) {
+      this.items.push(item);
+    },
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.text-continuous {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 </style>
