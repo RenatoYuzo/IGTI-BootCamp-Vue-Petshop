@@ -17,6 +17,12 @@
           {{ p.nome }}
         </v-card-title>
 
+        <v-card-subtitle class="float-right">
+          <span :class="p.desconto ? 'discount' : ''"
+            >R${{ convertCoinPtBr(p.preco) }}</span
+          >
+          <span v-if="p.desconto"> R${{ convertCoinPtBr(p.desconto) }}</span>
+        </v-card-subtitle>
         <v-card-subtitle class="text-continuous">
           {{ p.descricao }}
         </v-card-subtitle>
@@ -62,6 +68,9 @@ export default {
     addCart(item) {
       this.items.push(item);
     },
+    convertCoinPtBr(value) {
+      return new Intl.NumberFormat("pt-BR").format(value);
+    },
   },
 };
 </script>
@@ -72,5 +81,9 @@ export default {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.discount {
+  text-decoration: line-through;
+  color: gray;
 }
 </style>
