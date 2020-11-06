@@ -10,8 +10,6 @@ import ProductsList from "../components/ProductsList.vue";
 import Cart from "../components/Cart.vue";
 import { ApiService } from "../services/ApiService";
 
-import axios from "axios";
-
 export default {
   name: "Petshop",
   components: {
@@ -41,11 +39,17 @@ export default {
       },
     ],
   }),
-  created() {
-    this.service.getAllProducts().then((res) => {
-      this.products = res.data;
-    });
+  methods: {
+    async getAllProducts() {
+      this.service.getAllProducts().then((res) => {
+        this.products = res.data;
+      });
+    },
   },
+  async mounted() {
+    await this.getAllProducts();
+  },
+  created() {},
 };
 </script>
 

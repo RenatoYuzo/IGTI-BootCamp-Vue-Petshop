@@ -28,26 +28,18 @@
         </v-card-subtitle>
 
         <v-card-actions>
-          <v-btn @click="addCart(p)" color="orange lighten-2" text>
+          <v-btn @click="addCart(p)" color="primary lighten-2" text>
             Comprar
+            <v-icon right dark> mdi-cart-variant </v-icon>
           </v-btn>
 
           <v-spacer></v-spacer>
 
-          <v-btn icon @click="show = !show">
-            <v-icon>{{ show ? "mdi-chevron-up" : "mdi-chevron-down" }}</v-icon>
+          <v-btn @click="seeProduct(p)" color="primary lighten-2" text>
+            Ver
+            <v-icon>mdi-eye</v-icon>
           </v-btn>
         </v-card-actions>
-
-        <v-expand-transition>
-          <div v-show="show">
-            <v-divider></v-divider>
-
-            <v-card-text>
-              {{ p.descricao }}
-            </v-card-text>
-          </div>
-        </v-expand-transition>
       </v-card>
     </v-col>
   </v-row>
@@ -61,12 +53,13 @@ export default {
     products: Array,
     items: Array,
   },
-  data: () => ({
-    show: false,
-  }),
+  data: () => ({}),
   methods: {
     addCart(item) {
       this.items.push(item);
+    },
+    seeProduct(item) {
+      this.$router.push(`/product/` + item.id);
     },
     convertCoinPtBr(value) {
       return new Intl.NumberFormat("pt-BR").format(value);

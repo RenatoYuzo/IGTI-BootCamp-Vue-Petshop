@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
+import Product from '../views/Product.vue';
 import Petshop from '../views/Petshop.vue';
 
 Vue.use(VueRouter);
@@ -18,6 +19,11 @@ const routes = [
     meta: {
       title: 'E-commerce - Petshop',
     },
+  },
+  {
+    path: '/product/:id',
+    name: 'Product',
+    component: Product,
   },
 ];
 

@@ -22,4 +22,8 @@ export class ApiService {
   async getAllServices() {
     return await axios.get(this.url + 'servicos');
   }
+
+  async getProductById(id) {
+    return await axios.get(`${this.url}produtos/${id}`);
+  }
 }
