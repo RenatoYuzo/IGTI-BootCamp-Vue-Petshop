@@ -1,6 +1,27 @@
 <template>
   <v-container>
-    <h1>{{ product.nome }}</h1>
+    <v-card class="mx-auto" max-width="1000px">
+      <v-img
+        class="white--text align-end"
+        max-height="500px"
+        :src="product.foto"
+      >
+        <v-card-title class="fontSize2em">{{ product.nome }}</v-card-title>
+      </v-img>
+
+      <v-card-subtitle class="fontSize2em">
+        <span :class="product.desconto ? 'discount' : ''"
+          >R${{ convertCoinPtBr(product.preco) }}</span
+        >
+        <span v-if="product.desconto">
+          R${{ convertCoinPtBr(product.desconto) }}</span
+        >
+      </v-card-subtitle>
+
+      <v-card-text class="text--primary">
+        {{ product.descricao }}
+      </v-card-text>
+    </v-card>
   </v-container>
 </template>
 
@@ -26,6 +47,9 @@ export default {
         this.product = res.data;
       });
     },
+    convertCoinPtBr(value) {
+      return new Intl.NumberFormat("pt-BR").format(value);
+    },
   },
   created() {},
 };
@@ -33,4 +57,11 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.fontSize2em {
+  font-size: 2em;
+}
+.discount {
+  text-decoration: line-through;
+  color: gray;
+}
 </style>
